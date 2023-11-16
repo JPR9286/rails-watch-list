@@ -1,0 +1,27 @@
+<div class="container">
+      <%# Afficher la list %>
+      <h1> <%= @list.name %></h1>
+  <div class="row d-flex">
+    <div class="col col-6 col-md-4">
+      <%# ajouter un bouton Add movie %>
+      <%= link_to "add movie",  new_list_bookmark_path(@list), class: "btn btn-ghost" %>
+      <%# afficher f.form association avec le film %>
+      <%# enregistrer le bookmark %>
+      <%# afficher tous les films %>
+
+        <% @list.bookmarks.each do |bookmark| %>
+            <div class="card shadow">
+              <div class="card-category bd-placeholder-img card-img-top"
+                style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= bookmark.movie.poster_url %>')">
+              </div>
+
+              <%=  bookmark.comment %>
+              <%= link_to "🗑️", list_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete Movie form list?"}%>
+
+            </div>
+        <% end %>
+
+      <%= link_to "All Lists", lists_path, class:"btn btn-flat" %>
+    </div>
+  </div>
+</div>

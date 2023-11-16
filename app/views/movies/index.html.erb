@@ -1,0 +1,17 @@
+<div class="container">
+  container
+  <div class="row">
+    row
+    <%= @movies.each do |movie| %>
+      <div class="card">
+        card
+        <div class="card-image">
+          movie.image
+        </div>
+        <div class="card-text">
+          texte
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

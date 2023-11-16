@@ -1,0 +1,21 @@
+<div class="navbar">
+  NavBar
+</div>
+
+<div class="container py-5 text-center">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
+    <div class="col">
+      <% @lists.each do |list| %>
+        <%= link_to list_path(list) do %>
+          <div class="card shadow-sm py-3">
+            <div class="card-category bd-placeholder-img card-img-top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.image_url %>')">
+            </div>
+            <h2> <%= list.name %> </h2>
+            <%= link_to "🗑️", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete list?"}%>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= link_to "Add List", new_list_path  %>
+  </div>
+</div>
