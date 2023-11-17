@@ -1,6 +1,6 @@
 <div class="container">
       <%# Afficher la list %>
-      <h1> <%= @list.name %></h1>
+      <h1> <%= @list.name %> <%= @list.id %></h1>
   <div class="row d-flex">
     <div class="col col-6 col-md-4">
       <%# ajouter un bouton Add movie %>
@@ -15,12 +15,13 @@
                 style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= bookmark.movie.poster_url %>')">
               </div>
 
-              <%=  bookmark.comment %>
-              <%= link_to "🗑️", list_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete Movie form list?"}%>
-
+              <%= bookmark.comment %>
+              <%= link_to "🗑️", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete Movie form list?"}%>
+              id bookmark : <%= bookmark.id %>
+              <br>
+              id list : <%= @list.id %>
             </div>
         <% end %>
-
       <%= link_to "All Lists", lists_path, class:"btn btn-flat" %>
     </div>
   </div>

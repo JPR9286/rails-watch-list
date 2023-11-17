@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-  before_action :set_list, only: %i[create new destroy]
+  before_action :set_list, only: %i[create new]
   before_action :set_bookmark, only: %i[destroy]
 
   def new
@@ -19,8 +19,7 @@ class BookmarksController < ApplicationController
 
   def destroy
     @bookmark.destroy
-    redirect_to list_path(@list)
-
+    redirect_to list_path(@bookmark.list_id)
   end
 
   private
