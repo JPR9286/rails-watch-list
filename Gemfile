@@ -7,6 +7,10 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form"
 gem "sassc-rails"
+# GEM pour cacher les keys de sécurité.
+gem "dotenv-rails"
+# GEM Cloudinary
+gem "cloudinary"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
