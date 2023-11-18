@@ -1,21 +1,27 @@
-<div class="navbar">
-  NavBar
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://plus.unsplash.com/premium_photo-1682125771198-f7cbed7cb868?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="container">
+    <h1 class= "text-center">Watch List </h1>
+  </div>
 </div>
 
-<div class="container py-5 text-center">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
-    <div class="col">
-      <% @lists.each do |list| %>
-        <%= link_to list_path(list) do %>
-          <div class="card shadow-sm py-3">
-            <div class="card-category bd-placeholder-img card-img-top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.image_url %>')">
+<div class="container">
+  <div class="row py-3 d-flex">
+  <% @lists.each do |list| %>
+      <div class="col-4 p-2">
+        <div class="card">
+          <%= link_to list_path(list) do %>
+            <div class="card_background text-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path list.photo.key, height: 300, crop: :fill %>);">
+              <p>
+                <%= list.name %>
+              </p>
             </div>
-            <h2> <%= list.name %> </h2>
-            <%= link_to "🗑️", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete list?"}%>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <%= link_to "Add List", new_list_path  %>
+          <% end %>
+          <%= link_to list_path(list), data: {turbo_method: "delete", turbo_confirm: "Vous êtes surs ?"}, class: "poubelle" do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
+    <%= link_to "Add List", new_list_path, class: "btn btn-ghost"%>
 </div>
